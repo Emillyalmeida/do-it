@@ -41,31 +41,41 @@ const Login = () => {
 
   return (
     <Flex
-      h="100vh"
+      h={["auto", "auto", "100vh", "100vh"]}
       alignItems="center"
-      bgGradient="linear(to-r, purple.700 65%, white 35%)"
-      p="10px 15px"
+      justifyContent="center"
+      bgGradient={[
+        "linear(to-b, purple.700 65%, white 35%)",
+        "linear(to-b, purple.700 65%, white 35%)",
+        "linear(to-r, purple.700 65%, white 35%)",
+        "linear(to-r, purple.700 65%, white 35%)",
+      ]}
+      p={["10px 15px", "10px 15px", "0px", "0px"]}
       color="white"
     >
       <Flex
-        w="100%"
-        flexDirection="row"
+        w={["100%", "100%", "90%", "70%"]}
+        flexDirection={["column", "column", "row", "row"]}
         alignItems="center"
         justifyContent="center"
       >
-        <Grid w="90%" pr="100px">
-          <Image src={logoMain} alt="logo doit"></Image>
+        <Grid w={["100%", "100%", "50%", "50%"]} pr={["30px", "50px", "120px"]}>
+          <Image
+            boxSize={["120px", "120px", "180px", "180px"]}
+            src={logoMain}
+            alt="logo doit"
+          ></Image>
           <Heading as="h1">O jeito fácil, grátis</Heading>
-          <Text>
+          <Text mt="4" w={["250px", "300px", "350px", "350px"]}>
             flexível e atrativo de gerenciar seus projetos em uma única
             plataforma
           </Text>
         </Grid>
         <Grid
-          w="80%"
+          w={["100%", "100%", "45%", "45%"]}
           as="form"
           onSubmit={handleSubmit(onSubmit)}
-          mt="4"
+          mt={["5", "5", "0", "0"]}
           p="30px 15px"
           bg="white"
           color="gray.600"
