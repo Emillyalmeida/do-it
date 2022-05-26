@@ -22,7 +22,7 @@ import { IconType } from "react-icons/lib";
 interface InputProps extends ChakraInputProps {
   name: string;
   label?: string;
-  error?: FieldError | null;
+  error?: FieldError | undefined;
   icon?: IconType;
 }
 
@@ -38,7 +38,7 @@ const variations: VariationOption = {
 };
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { name, label, error = null, icon: Icon, ...rest },
+  { name, label, error = undefined, icon: Icon, ...rest },
   ref
 ) => {
   const [variation, setvariation] = useState("default");

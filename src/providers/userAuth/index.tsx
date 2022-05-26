@@ -37,6 +37,7 @@ interface ContextValue {
   user: User;
   loading: boolean;
   PostLogin: ({ email, password }: LoginProps) => void;
+  Logout: () => void;
 }
 
 interface AuthProviderProps {
@@ -74,6 +75,13 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       });
   }, []);
 
+  const Logout = useCallback(() => {
+    localStorage.removeItem("Doit:accessToken");
+    localStorage.removeItem("Doit:user");
+
+    setData({} as UserData);
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -81,6 +89,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         user: data.user,
         loading,
         PostLogin,
+        Logout,
       }}
     >
       {children}
