@@ -17,6 +17,7 @@ import { FaLock } from "react-icons/fa";
 import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { UserAuth } from "../../providers/userAuth";
 
 const Login = () => {
   const schema = yup.object().shape({
@@ -37,7 +38,12 @@ const Login = () => {
     email: string;
     password: string;
   }
-  const onSubmit: SubmitHandler<dataLogin> = (data) => console.log(data);
+
+  const { PostLogin } = UserAuth();
+
+  const onSubmit: SubmitHandler<dataLogin> = ({ email, password }) => {
+    PostLogin({ email, password });
+  };
 
   return (
     <Flex
