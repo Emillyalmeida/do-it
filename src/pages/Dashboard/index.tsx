@@ -5,6 +5,7 @@ const Dashboard = () => {
   return (
     <Box>
       <Header />
+      <SearchBox />
     </Box>
   );
 };
