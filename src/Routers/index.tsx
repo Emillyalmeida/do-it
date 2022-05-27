@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
@@ -14,7 +15,9 @@ const Routers = () => {
       <Route path="/register">
         <Register />
       </Route>
-      <Route path="dashboard"></Route>
+      <Route path="dashboard">
+        <Dashboard />
+      </Route>
     </Switch>
   );
 };
