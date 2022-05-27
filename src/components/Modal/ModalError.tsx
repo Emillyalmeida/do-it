@@ -15,9 +15,16 @@ import { FaExclamation } from "react-icons/fa";
 interface ModalErrorProps {
   isOpen: boolean;
   onClose: () => void;
+  secundaryMessage: string;
+  error: string;
 }
 
-const ModalError = ({ isOpen, onClose }: ModalErrorProps) => {
+const ModalError = ({
+  isOpen,
+  onClose,
+  secundaryMessage,
+  error,
+}: ModalErrorProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -31,15 +38,16 @@ const ModalError = ({ isOpen, onClose }: ModalErrorProps) => {
           </Text>
         </ModalHeader>
         <ModalCloseButton
+          fontWeight="bold"
           bg="red.500"
           color="white"
           _hover={{ bg: "red.600" }}
         />
-        <ModalBody>
-          <Text> Ocorreu algum erro!</Text>
+        <ModalBody color="gray.400" textAlign="center">
+          <Text> Ocorreu algum erro! {error}</Text>
         </ModalBody>
 
-        <ModalFooter>
+        <ModalFooter display="flex" flexDirection="column">
           <Button
             w="100%"
             bg="red.500"
@@ -50,6 +58,7 @@ const ModalError = ({ isOpen, onClose }: ModalErrorProps) => {
           >
             Tentar novamente
           </Button>
+          <Text textAlign="center" mt="4" pb="4"></Text>
         </ModalFooter>
       </ModalContent>
     </Modal>

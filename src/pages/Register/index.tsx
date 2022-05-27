@@ -24,6 +24,7 @@ import { useState } from "react";
 import api from "../../services/api";
 import ModalError from "../../components/Modal/ModalError";
 import ModalSuccess from "../../components/Modal/ModalSuccess";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
   const schema = yup.object().shape({
@@ -66,6 +67,8 @@ const Register = () => {
     onClose: onCloseSuccess,
   } = useDisclosure();
 
+  const history = useHistory();
+
   const onSubmit = (data: dataRegister) => {
     setLoading(true);
     const { email, password, name } = data;
@@ -88,8 +91,22 @@ const Register = () => {
 
   return (
     <>
-      <ModalError isOpen={isOpenError} onClose={onCloseError} />
-      <ModalSuccess isOpen={isOpenSuccess} onClose={onCloseSuccess} />
+      <ModalError
+        isOpen={isOpenError}
+        onClose={onCloseError}
+        secundaryMessage="Você já pode tentar novamente,<b> clicando</b> no botão acima ou
+            aguarde alguns minutos..."
+        error="Esse e-mail já esta em uso"
+      />
+      <ModalSuccess
+        isOpen={isOpenSuccess}
+        onClose={onCloseSuccess}
+        buttonMessage="Ir para o login agora"
+        secundaryMessage="Você já pode começar criando <b>suas listas</b> de tarefas agora
+        mesmo..."
+        message="Seu cadastro deu super certo, <b>vamos lá</b>"
+        onClick={() => history.push("/login")}
+      />
       <Flex
         h={["auto", "auto", "100vh", "100vh"]}
         alignItems="center"
@@ -111,7 +128,7 @@ const Register = () => {
         >
           {isWideVersion ? (
             <>
-              <ButtonBack top="150px" left="40px" />
+              <ButtonBack top="60px" left="40px" />
               <RegisterForm onsubmit={handleSubmit(onSubmit)} loading={loading}>
                 <Box w="100%">
                   <Input
@@ -164,7 +181,7 @@ const Register = () => {
             </>
           ) : (
             <>
-              <ButtonBack top="15px" left="75vw" />
+              <ButtonBack top="25px" left="70vw" />
               <RegisterInfo />
 
               <RegisterForm onsubmit={handleSubmit(onSubmit)} loading={loading}>
