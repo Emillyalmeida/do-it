@@ -21,7 +21,6 @@ import { Input } from "../Form";
 import { Textarea } from "../Form/TextArea";
 import { UserAuth } from "../../providers/userAuth";
 import { useTasks } from "../../providers/tasks";
-import { access } from "fs/promises";
 
 interface ModalSuccessProps {
   isOpen: boolean;
@@ -54,7 +53,7 @@ const ModalCreateTask = ({ isOpen, onClose }: ModalSuccessProps) => {
   const postTask = (data: TaskData) => {
     const newData = { ...data, completed: false, userId: user.id };
 
-    createTask(newData, accessToken);
+    createTask(newData, accessToken).then((_) => onClose());
   };
 
   return (

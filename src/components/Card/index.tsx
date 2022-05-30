@@ -8,6 +8,8 @@ import {
   Progress,
 } from "@chakra-ui/react";
 import { FaTrash, FaCheck } from "react-icons/fa";
+import { useTasks } from "../../providers/tasks";
+import { UserAuth } from "../../providers/userAuth";
 import { theme } from "../../styles/theme";
 
 interface CardProps {
@@ -24,6 +26,9 @@ interface Task {
 }
 
 const Card = ({ task }: CardProps) => {
+  const { user, accessToken } = UserAuth();
+  const { deleteTask, updateTask } = useTasks();
+
   return (
     <Box
       cursor="pointer"
@@ -41,6 +46,7 @@ const Card = ({ task }: CardProps) => {
           <HStack>
             <Center
               as="button"
+              cursor="pointer"
               borderWidth="1px"
               borderColor="gray.300"
               borderRadius="5px"
@@ -48,11 +54,13 @@ const Card = ({ task }: CardProps) => {
               w="30px"
               h="30px"
               _hover={{ bgColor: "purple.700" }}
+              onClick={() => deleteTask(user.id, accessToken, task.id)}
             >
               <FaTrash color={theme.colors.gray["300"]} />
             </Center>
             <Center
               as="button"
+              cursor="pointer"
               borderWidth="1px"
               borderColor="gray.300"
               borderRadius="5px"
@@ -60,6 +68,7 @@ const Card = ({ task }: CardProps) => {
               w="30px"
               h="30px"
               _hover={{ bgColor: "purple.700" }}
+              onClick={() => updateTask(user.id, accessToken, task.id)}
             >
               <FaCheck color={theme.colors.gray["300"]} />
             </Center>
