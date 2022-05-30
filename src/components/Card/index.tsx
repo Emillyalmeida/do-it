@@ -15,17 +15,17 @@ import { theme } from "../../styles/theme";
 interface CardProps {
   task: Task;
   key: string;
+  onClick: (task: Task) => void;
 }
 
 interface Task {
   id: string;
   title: string;
   description: string;
-  userId: string;
   completed: boolean;
 }
 
-const Card = ({ task }: CardProps) => {
+const Card = ({ task, onClick }: CardProps) => {
   const { user, accessToken } = UserAuth();
   const { deleteTask, updateTask } = useTasks();
 
@@ -75,7 +75,7 @@ const Card = ({ task }: CardProps) => {
           </HStack>
         </Heading>
       </Flex>
-      <Box ml="4" w="100%">
+      <Box ml="4" w="100%" onClick={() => onClick(task)}>
         <Text color="gray.400">{task.description}</Text>
         <Progress
           colorScheme="purple"
