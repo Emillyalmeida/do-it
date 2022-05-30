@@ -10,7 +10,20 @@ import {
 import { FaTrash, FaCheck } from "react-icons/fa";
 import { theme } from "../../styles/theme";
 
-const Card = () => {
+interface CardProps {
+  task: Task;
+  key: string;
+}
+
+interface Task {
+  id: string;
+  title: string;
+  description: string;
+  userId: string;
+  completed: boolean;
+}
+
+const Card = ({ task }: CardProps) => {
   return (
     <Box
       cursor="pointer"
@@ -24,6 +37,7 @@ const Card = () => {
     >
       <Flex justifyContent="space-between">
         <Heading>
+          {task.title}
           <HStack>
             <Center
               as="button"
@@ -53,9 +67,13 @@ const Card = () => {
         </Heading>
       </Flex>
       <Box ml="4" w="100%">
-        <Text color="gray.400">test</Text>
-        <Progress colorScheme="purple" mt="3" value={10} />
-        <Text color="gray.300"></Text>
+        <Text color="gray.400">{task.description}</Text>
+        <Progress
+          colorScheme="purple"
+          mt="3"
+          value={task.completed ? 100 : 10}
+        />
+        <Text color="gray.300"> data </Text>
       </Box>
     </Box>
   );
