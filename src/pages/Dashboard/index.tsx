@@ -1,4 +1,13 @@
-import { Box, Grid, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  useDisclosure,
+  Center,
+  Heading,
+  Text,
+  Stack,
+  Skeleton,
+} from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 import Card from "../../components/Card";
@@ -22,7 +31,7 @@ const Dashboard = () => {
   const [clickTask, setTask] = useState({} as Task);
 
   const { user, accessToken } = UserAuth();
-  const { tasks, loadingTasks } = useTasks();
+  const { tasks, loadingTasks, notFound, taskNotFound } = useTasks();
 
   useEffect(() => {
     setLoading(true);
@@ -50,17 +59,64 @@ const Dashboard = () => {
       <Box>
         <Header />
         <SearchBox />
-        <Grid
-          w="100%"
-          templateColumns="repeat(auto-fill, minmax(400px,1fr))"
-          gap={10}
-          p="8"
-          mt="10"
-        >
-          {tasks.map((task) => (
-            <Card task={task} key={task.id} onClick={handleClick} />
-          ))}
-        </Grid>
+        {notFound ? (
+          <Center mt="10" display="flex" flexDir="column" textAlign="center">
+            <Heading size="lg">Não encontramos resultados para:</Heading>
+            <Text fontWeight="bold" color="gray.200" fontSize="xl">
+              {taskNotFound}
+            </Text>
+            <Box
+              mt="6"
+              p="8"
+              bg="white"
+              boxShadow="base"
+              w={["80%", "70%", "40%"]}
+            >
+              <Stack>
+                <Skeleton
+                  startColor="gray.100"
+                  endColor="gray.200"
+                  h="20px"
+                  borderRadius="20px"
+                  w="75%"
+                />
+                <Skeleton
+                  startColor="gray.100"
+                  endColor="gray.200"
+                  h="20px"
+                  borderRadius="20px"
+                  w="60%"
+                />
+              </Stack>
+              <Stack>
+                <Skeleton
+                  startColor="gray.100"
+                  endColor="gray.200"
+                  h="14px"
+                  borderRadius="14px"
+                />
+                <Skeleton
+                  startColor="gray.100"
+                  endColor="gray.200"
+                  h="14px"
+                  borderRadius="14px"
+                />
+              </Stack>
+            </Box>
+          </Center>
+        ) : (
+          <Grid
+            w="100%"
+            templateColumns="repeat(auto-fill, minmax(400px,1fr))"
+            gap={10}
+            p="8"
+            mt="10"
+          >
+            {tasks.map((task) => (
+              <Card task={task} key={task.id} onClick={handleClick} />
+            ))}
+          </Grid>
+        )}
       </Box>
     </>
   );
