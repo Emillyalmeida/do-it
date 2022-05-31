@@ -19,8 +19,8 @@ const ButtonBack = ({ top, left }: ButtonProps) => {
       left={left}
       fontSize="2xl"
       borderRadius="5px"
-      w={["60px", "80px"]}
-      h={["60px", "70px"]}
+      w={["60px", "75px"]}
+      h={["60px", "65px"]}
       onClick={() => history.push("/")}
     >
       <FaArrowLeft />

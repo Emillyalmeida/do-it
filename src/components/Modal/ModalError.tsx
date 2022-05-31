@@ -30,7 +30,13 @@ const ModalError = ({
       <ModalOverlay />
       <ModalContent color="gray.800">
         <ModalHeader display="flex">
-          <Center bg="red.500" color="white" w="30px" h="30px">
+          <Center
+            bg="red.500"
+            color="white"
+            w="30px"
+            h="30px"
+            borderRadius="5px"
+          >
             <FaExclamation />
           </Center>
           <Text ml="2" fontWeight="bold">
@@ -58,7 +64,10 @@ const ModalError = ({
           >
             Tentar novamente
           </Button>
-          <Text textAlign="center" mt="4" pb="4"></Text>
+          <Text textAlign="center" mt="4" pb="4" color="gray.400">
+            Você já pode tentar novamente,<b>clicando</b> no botão acima ou
+            aguarde alguns minutos...
+          </Text>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -36,7 +36,13 @@ const ModalSuccess = ({
       <ModalOverlay />
       <ModalContent color="gray.800">
         <ModalHeader display="flex">
-          <Center bg="purple.500" color="white" w="30px" h="30px">
+          <Center
+            bg="purple.500"
+            color="white"
+            w="30px"
+            h="30px"
+            borderRadius="5px"
+          >
             <FaExclamation />
           </Center>
           <Text ml="2" fontWeight="bold">
@@ -71,7 +77,7 @@ const ModalSuccess = ({
           >
             {buttonMessage}
           </Button>
-          <Text textAlign="center" mt="4" pb="4">
+          <Text textAlign="center" mt="4" pb="4" color="gray.400">
             <Box
               dangerouslySetInnerHTML={{
                 __html: secundaryMessage,

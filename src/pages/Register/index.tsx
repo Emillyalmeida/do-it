@@ -109,6 +109,7 @@ const Register = () => {
       />
       <Flex
         h={["auto", "auto", "100vh", "100vh"]}
+        minH={["auto", "auto", "800px", "800px"]}
         alignItems="center"
         justifyContent="center"
         bgGradient={[
@@ -181,7 +182,7 @@ const Register = () => {
             </>
           ) : (
             <>
-              <ButtonBack top="25px" left="70vw" />
+              <ButtonBack top="22px" left="70vw" />
               <RegisterInfo />
 
               <RegisterForm onsubmit={handleSubmit(onSubmit)} loading={loading}>
