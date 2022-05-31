@@ -28,7 +28,11 @@ interface TaskContextData {
     accessToken: string,
     taskId: string
   ) => Promise<void>;
-  searchTask: (search: string, accessToken: string) => Promise<void>;
+  searchTask: (
+    search: string,
+    accessToken: string,
+    userId: string
+  ) => Promise<void>;
   notFound: boolean;
   taskNotFound: string;
 }
@@ -74,7 +78,11 @@ const TasksProvider = ({ children }: TasksProviderProp) => {
             Authorization: `Bearer ${accessToken}`,
           },
         })
-        .then((res) => setTasks([...tasks, res.data]))
+        .then((res) => {
+          console.log(res.data);
+          // setTasks([...tasks, res.data]);
+          loadingTasks(data.userId, accessToken);
+        })
         .catch((err) => console.log(err));
     },
     []
@@ -112,8 +120,8 @@ const TasksProvider = ({ children }: TasksProviderProp) => {
   );
 
   const searchTask = useCallback(
-    async (search: string, accessToken: string) => {
-      const response = await api.get(`tasks?title=${search}`, {
+    async (search: string, accessToken: string, userId: string) => {
+      const response = await api.get(`tasks?userId=${userId}&q=${search}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

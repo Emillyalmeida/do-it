@@ -32,7 +32,7 @@ type VariationOption = {
 const variations: VariationOption = {
   erro: "red.500",
   ok: "green.500",
-  default: "gray.200",
+  default: "gray.300",
   focus: "purple.800",
 };
 
@@ -63,7 +63,7 @@ const TextAreaBase: ForwardRefRenderFunction<
 
   return (
     <FormControl isInvalid={!!error}>
-      {!!label && <FormLabel> {label}</FormLabel>}
+      {!!label && <FormLabel color="gray.300"> {label}</FormLabel>}
 
       <InputGroup flexDirection="column">
         {Icon && (
@@ -75,7 +75,7 @@ const TextAreaBase: ForwardRefRenderFunction<
         <ChakraTextArea
           ref={ref}
           name={name}
-          h="60px"
+          h="90px"
           size="lg"
           bg="gray.50"
           color={variations[variation]}

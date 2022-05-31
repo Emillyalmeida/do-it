@@ -14,21 +14,21 @@ const SearchBox = () => {
 
   const { register, handleSubmit } = useForm();
 
-  const { accessToken } = UserAuth();
+  const { accessToken, user } = UserAuth();
   const { searchTask } = useTasks();
 
   const onSubmit = handleSubmit((data) => {
     const { search } = data;
-    searchTask(search, accessToken);
+    searchTask(search, accessToken, user.id);
   });
 
   return (
     <>
       <ModalCreateTask onClose={onClose} isOpen={isOpen} />
       <Flex
-        mt="8"
+        mt="4"
         paddingX={["6", "6", "8"]}
-        paddingY="4"
+        paddingY="6"
         borderBottom="1px"
         borderColor="gray.50"
         flexDirection={["column", "column", "row"]}
@@ -36,7 +36,7 @@ const SearchBox = () => {
         <Flex as="form" onSubmit={onSubmit}>
           <Input
             placeholder="Pesquisar por tarefa"
-            w={["90%", "90%", "35vw"]}
+            w={["100%", "100%", "35vw"]}
             {...register("search")}
           />
           <Center
@@ -60,9 +60,10 @@ const SearchBox = () => {
           fontSize="2xl"
           borderRadius="8px"
           paddingX="19"
+          color="white"
           _hover={{ bg: "purple.600" }}
-          w={["95%", "95%", "auto"]}
-          pt={["4", "4", "0"]}
+          w={["100%", "100%", "auto"]}
+          mt={["4", "4", "0"]}
           onClick={onOpen}
         >
           Adicionar nova tarefa

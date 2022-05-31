@@ -9,7 +9,6 @@ import {
   Text,
   Button,
   Center,
-  Box,
   VStack,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
@@ -62,13 +61,13 @@ const ModalCreateTask = ({ isOpen, onClose }: ModalSuccessProps) => {
       <ModalContent
         as="form"
         onSubmit={handleSubmit(postTask)}
-        color="gray.800"
+        color="gray.300"
       >
         <ModalHeader display="flex">
           <Center bg="purple.500" color="white" w="30px" h="30px">
             <FaClipboard />
           </Center>
-          <Text ml="2" fontWeight="bold">
+          <Text ml="2" fontWeight="bold" color="gray.800">
             Adicionar
           </Text>
         </ModalHeader>
@@ -78,8 +77,8 @@ const ModalCreateTask = ({ isOpen, onClose }: ModalSuccessProps) => {
           color="white"
           _hover={{ bg: "red.600" }}
         />
-        <ModalBody as="form">
-          <VStack spacing="5" mt="5">
+        <ModalBody>
+          <VStack spacing="5" mt="4">
             <Input
               label="Title"
               placeholder="Digite seu título"
@@ -103,10 +102,9 @@ const ModalCreateTask = ({ isOpen, onClose }: ModalSuccessProps) => {
             color="white"
             _hover={{ bg: "purple.600" }}
             type="submit"
-          ></Button>
-          <Text textAlign="center" mt="4" pb="4">
+          >
             Adicionar Tarefa
-          </Text>
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

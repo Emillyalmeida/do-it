@@ -25,6 +25,7 @@ const Dashboard = () => {
   const { user, accessToken } = UserAuth();
   const { tasks, loadingTasks, notFound, taskNotFound } = useTasks();
 
+  console.log(tasks);
   useEffect(() => {
     setLoading(true);
     loadingTasks(user.id, accessToken).then((_) => setLoading(false));
