@@ -50,7 +50,9 @@ const ModalError = ({
           _hover={{ bg: "red.600" }}
         />
         <ModalBody color="gray.400" textAlign="center">
-          <Text> Ocorreu algum erro! {error}</Text>
+          <Text>
+            Ocorreu algum erro! <b>{error}</b>
+          </Text>
         </ModalBody>
 
         <ModalFooter display="flex" flexDirection="column">

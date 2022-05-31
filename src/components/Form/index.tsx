@@ -32,7 +32,7 @@ type VariationOption = {
 const variations: VariationOption = {
   erro: "red.500",
   ok: "green.500",
-  default: "gray.200",
+  default: "gray.300",
   focus: "purple.800",
 };
 
@@ -67,8 +67,8 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 
       <InputGroup flexDirection="column">
         {Icon && (
-          <InputLeftElement color={variations[variation]} mt="0.8rem">
-            <Icon />
+          <InputLeftElement color={variations[variation]} ml="5px" mt="0.7rem">
+            <Icon size="1.25rem" />
           </InputLeftElement>
         )}
 

@@ -35,8 +35,7 @@ interface LoginProps {
 interface ContextValue {
   accessToken: string;
   user: User;
-  loading: boolean;
-  PostLogin: ({ email, password }: LoginProps) => void;
+  PostLogin: ({ email, password }: LoginProps) => Promise<void>;
   Logout: () => void;
 }
 
@@ -47,8 +46,6 @@ interface AuthProviderProps {
 const AuthContext = createContext<ContextValue>({} as ContextValue);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [loading, setLoading] = useState(false);
-
   const [data, setData] = useState<UserData>(() => {
     const accessToken = localStorage.getItem("Doit:accessToken");
     const user = localStorage.getItem("Doit:user");
@@ -58,21 +55,19 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       : ({} as UserData);
   });
 
-  const PostLogin = useCallback(({ email, password }: LoginProps) => {
-    setLoading(true);
-    api
-      .post("login", { email, password })
-      .then((res) => {
-        const { accessToken, user } = res.data;
-        localStorage.setItem("Doit:accessToken", accessToken);
-        localStorage.setItem("Doit:user", JSON.stringify(user));
+  const PostLogin = useCallback(async ({ email, password }: LoginProps) => {
+    console.log("oi");
+    await api.post("login", { email, password }).then((res) => {
+      const { accessToken, user } = res.data;
+      localStorage.setItem("Doit:accessToken", accessToken);
+      localStorage.setItem("Doit:user", JSON.stringify(user));
 
-        setData({ accessToken, user });
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-      });
+      setData({ accessToken, user });
+    });
+    // .catch((err) => {
+    //   console.log(err);
+    //   setLoading(false);
+    // });
   }, []);
 
   const Logout = useCallback(() => {
@@ -87,7 +82,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       value={{
         accessToken: data.accessToken,
         user: data.user,
-        loading,
         PostLogin,
         Logout,
       }}

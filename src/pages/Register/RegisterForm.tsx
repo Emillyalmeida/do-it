@@ -18,6 +18,7 @@ const RegisterForm = ({ children, onsubmit, loading }: LoginFormProps) => {
       bg="white"
       color="gray.600"
       border="3px solid white"
+      boxShadow="base"
     >
       <Heading as="h2"> Crie sua conta</Heading>
       <VStack mt="7" spacing="4">

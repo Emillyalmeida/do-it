@@ -1,5 +1,6 @@
 import { Button, Grid, Heading, Text, VStack } from "@chakra-ui/react";
 import { ReactNode } from "react";
+import { useHistory } from "react-router-dom";
 
 interface LoginFormProps {
   loading: boolean;
@@ -8,9 +9,11 @@ interface LoginFormProps {
 }
 
 const LoginForm = ({ children, onsubmit, loading }: LoginFormProps) => {
+  const history = useHistory();
+
   return (
     <Grid
-      w={["100%", "100%", "45%", "45%"]}
+      w={["100%", "100%", "48%", "48%"]}
       as="form"
       onSubmit={onsubmit}
       mt={["5", "5", "0", "0"]}
@@ -18,8 +21,11 @@ const LoginForm = ({ children, onsubmit, loading }: LoginFormProps) => {
       bg="white"
       color="gray.600"
       border="3px solid white"
+      boxShadow="base"
     >
-      <Heading as="h2"> Bem Vindo de volta !!</Heading>
+      <Heading as="h2" fontSize="3xl">
+        Bem Vindo de volta !!
+      </Heading>
       <VStack mt="7" spacing="4">
         {children}
       </VStack>
@@ -38,7 +44,15 @@ const LoginForm = ({ children, onsubmit, loading }: LoginFormProps) => {
         </Button>
 
         <Text color="gray.400">Ainda não possui uma conta?</Text>
-        <Button borderRadius="8px" w="100%" h="60px" color="gray.300">
+        <Button
+          isLoading={loading}
+          borderRadius="8px"
+          w="100%"
+          h="60px"
+          color="gray.300"
+          _hover={{ bg: "gray.200" }}
+          onClick={() => history.push("/register")}
+        >
           Cadastrar
         </Button>
       </VStack>

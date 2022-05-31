@@ -166,6 +166,7 @@ const Register = () => {
                     {...register("password")}
                     placeholder="Digite sua senha"
                     error={errors.password}
+                    type="password"
                   />
                 </Box>
                 <Box w="100%">
@@ -175,6 +176,7 @@ const Register = () => {
                     {...register("confirmPassword")}
                     placeholder="Confirme sua senha"
                     error={errors.confirmPassword}
+                    type="password"
                   />
                 </Box>
               </RegisterForm>
