@@ -3,7 +3,7 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
+  Box,
   ModalBody,
   ModalCloseButton,
   Text,
@@ -36,7 +36,7 @@ const ModalDetails = ({ isOpen, onClose, task }: ModalDetailsProps) => {
   const { deleteTask, updateTask } = useTasks();
 
   const handleDelete = () => {
-    deleteTask(user.id, accessToken, task.id);
+    deleteTask(task.id, accessToken, user.id);
     onClose();
   };
   return (
@@ -44,8 +44,16 @@ const ModalDetails = ({ isOpen, onClose, task }: ModalDetailsProps) => {
       <ModalOverlay />
       <ModalContent color="gray.800">
         <ModalHeader display="flex" justifyContent="space-between">
-          <Heading>
-            <Center bg="red.500" color="white" w="30px" h="30px">
+          <Heading display="flex" alignItems="center">
+            <Center
+              bg="purple.500"
+              color="white"
+              w="30px"
+              h="30px"
+              mr="2"
+              fontSize="1.1rem"
+              borderRadius="5px"
+            >
               <FaCube />
             </Center>
             Visualizar
@@ -80,6 +88,7 @@ const ModalDetails = ({ isOpen, onClose, task }: ModalDetailsProps) => {
               <FaCheck color={theme.colors.gray["300"]} />
             </Center>
             <ModalCloseButton
+              position="inherit"
               fontWeight="bold"
               bg="red.500"
               color="white"
@@ -91,17 +100,23 @@ const ModalDetails = ({ isOpen, onClose, task }: ModalDetailsProps) => {
           <Heading as="h2" fontSize="2xl">
             {task.title}
           </Heading>
-          <Text color="gray.400"> {task.description}</Text>
+          <Text color="gray.400" pt="4">
+            {" "}
+            {task.description}
+          </Text>
         </ModalBody>
 
-        <ModalFooter display="flex" flexDirection="column">
+        <Box display="flex" flexDirection="column" paddingX="6" pb="6">
           <Progress
             colorScheme="purple"
             mt="3"
             value={task.completed ? 100 : 10}
           />
-          <Text color="gray.300"> data </Text>
-        </ModalFooter>
+          <Text color="gray.300" mt="2">
+            {" "}
+            data{" "}
+          </Text>
+        </Box>
       </ModalContent>
     </Modal>
   );

@@ -72,6 +72,7 @@ const ModalCreateTask = ({ isOpen, onClose }: ModalSuccessProps) => {
           </Text>
         </ModalHeader>
         <ModalCloseButton
+          position="absolute"
           fontWeight="bold"
           bg="red.500"
           color="white"

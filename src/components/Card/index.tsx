@@ -38,7 +38,7 @@ const Card = ({ task, onClick }: CardProps) => {
       borderColor="gray.50"
       boxShadow="base"
       padding="8"
-      w={["300px", "auto"]}
+      w={["90%", "auto"]}
     >
       <Flex justifyContent="space-between" mb="4">
         <Heading>{task.title}</Heading>
@@ -73,7 +73,7 @@ const Card = ({ task, onClick }: CardProps) => {
           </Center>
         </HStack>
       </Flex>
-      <Box ml="4" w="100%" onClick={() => onClick(task)}>
+      <Box pl="4" w="100%" onClick={() => onClick(task)}>
         <Text color="gray.400">{task.description}</Text>
         <Progress
           colorScheme="purple"
@@ -81,8 +81,7 @@ const Card = ({ task, onClick }: CardProps) => {
           value={task.completed ? 100 : 10}
         />
         <Text color="gray.300" mt="3">
-          {" "}
-          data{" "}
+          data
         </Text>
       </Box>
     </Box>

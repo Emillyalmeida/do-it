@@ -64,7 +64,7 @@ const Dashboard = () => {
                 templateColumns="repeat(auto-fill, minmax(400px,1fr))"
                 gap={10}
                 p="8"
-                mt="10"
+                mt="4"
               >
                 {tasks.map((task) => (
                   <Card task={task} key={task.id} onClick={handleClick} />
