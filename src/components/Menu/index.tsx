@@ -23,8 +23,13 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
 
   return (
     <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
-      <DrawerOverlay mt="8vh" />
-      <DrawerContent ml="auto" mt="80px" w={["300px", "300px", "400px"]}>
+      <DrawerOverlay mt={["11vh", "11vh", "12vh"]} />
+      <DrawerContent
+        ml="auto"
+        mt={["9vh", "9vh", "10vh"]}
+        w={["300px", "300px", "400px"]}
+        boxShadow="base"
+      >
         <DrawerHeader
           borderBottomWidth="1px"
           borderColor="gray.50"
@@ -40,14 +45,15 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
               bg="red.500"
               borderRadius="md"
               fontSize="2xl"
+              _hover={{ bgColor: "red.600" }}
             >
               <FiLogOut color="white" />
             </Center>
-            <Box pb="4" mt="4">
+            <Box pb="4" mt="4" ml="3">
               <Heading as="h2" fontSize="lg">
                 Sair da minha Conta
               </Heading>
-              <Text fontSize="small" color="gray.200">
+              <Text fontSize="md" color="gray.300">
                 Sair da minha conta agora
               </Text>
             </Box>
