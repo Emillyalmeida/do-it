@@ -73,7 +73,7 @@ const ModalSuccess = ({
             h="60px"
             color="white"
             _hover={{ bg: "purple.600" }}
-            onClick={onClose}
+            onClick={onClick}
           >
             {buttonMessage}
           </Button>

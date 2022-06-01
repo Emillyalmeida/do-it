@@ -123,120 +123,65 @@ const Register = () => {
       >
         <Flex
           w={["100%", "100%", "90%", "70%"]}
-          flexDirection={["column", "column", "row", "row"]}
+          flexDirection={["column", "column", "row-reverse", "row-reverse"]}
           alignItems="center"
           justifyContent="center"
         >
-          {isWideVersion ? (
-            <>
-              <ButtonBack top="60px" left="40px" />
-              <RegisterForm onsubmit={handleSubmit(onSubmit)} loading={loading}>
-                <Box w="100%">
-                  <Input
-                    icon={FaUser}
-                    label="Nome"
-                    {...register("name")}
-                    placeholder="Digite seu Nome"
-                    error={errors.name}
-                  />
-                  {!errors.name && (
-                    <Text ml="1" mt="1" color="gray.300">
-                      Exemplo: name
-                    </Text>
-                  )}
-                </Box>
-                <Box w="100%">
-                  <Input
-                    icon={FaEnvelope}
-                    label="Email"
-                    {...register("email")}
-                    placeholder="Digite seu Register"
-                    error={errors.email}
-                  />
-                  {!errors.email && (
-                    <Text ml="1" mt="1" color="gray.300">
-                      Exemplo: name@mail.com
-                    </Text>
-                  )}
-                </Box>
-                <Box w="100%">
-                  <Input
-                    icon={FaLock}
-                    label="Senha"
-                    {...register("password")}
-                    placeholder="Digite sua senha"
-                    error={errors.password}
-                    type="password"
-                  />
-                </Box>
-                <Box w="100%">
-                  <Input
-                    icon={FaLock}
-                    label="Confirme senha"
-                    {...register("confirmPassword")}
-                    placeholder="Confirme sua senha"
-                    error={errors.confirmPassword}
-                    type="password"
-                  />
-                </Box>
-              </RegisterForm>
-              <RegisterInfo />
-            </>
-          ) : (
-            <>
-              <ButtonBack top="22px" left="70vw" />
-              <RegisterInfo />
-
-              <RegisterForm onsubmit={handleSubmit(onSubmit)} loading={loading}>
-                <Box w="100%">
-                  <Input
-                    icon={FaUser}
-                    label="Nome"
-                    {...register("name")}
-                    placeholder="Digite seu Nome"
-                    error={errors.name}
-                  />
-                  {!errors.name && (
-                    <Text ml="1" mt="1" color="gray.300">
-                      Exemplo: name
-                    </Text>
-                  )}
-                </Box>
-                <Box w="100%">
-                  <Input
-                    icon={FaEnvelope}
-                    label="Email"
-                    {...register("email")}
-                    placeholder="Digite seu Register"
-                    error={errors.email}
-                  />
-                  {!errors.email && (
-                    <Text ml="1" mt="1" color="gray.300">
-                      Exemplo: name@mail.com
-                    </Text>
-                  )}
-                </Box>
-                <Box w="100%">
-                  <Input
-                    icon={FaLock}
-                    label="Senha"
-                    {...register("password")}
-                    placeholder="Digite sua senha"
-                    error={errors.password}
-                  />
-                </Box>
-                <Box w="100%">
-                  <Input
-                    icon={FaLock}
-                    label="Confirme senha"
-                    {...register("confirmPassword")}
-                    placeholder="Confirme sua senha"
-                    error={errors.confirmPassword}
-                  />
-                </Box>
-              </RegisterForm>
-            </>
-          )}
+          <ButtonBack
+            top={isWideVersion ? "55px" : "35px"}
+            left={isWideVersion ? "40px" : "70vw"}
+          />
+          <RegisterInfo />
+          <RegisterForm onsubmit={handleSubmit(onSubmit)} loading={loading}>
+            <Box w="100%">
+              <Input
+                icon={FaUser}
+                label="Nome"
+                {...register("name")}
+                placeholder="Digite seu Nome"
+                error={errors.name}
+              />
+              {!errors.name && (
+                <Text ml="1" mt="1" color="gray.300">
+                  Exemplo: name
+                </Text>
+              )}
+            </Box>
+            <Box w="100%">
+              <Input
+                icon={FaEnvelope}
+                label="Email"
+                {...register("email")}
+                placeholder="Digite seu Register"
+                error={errors.email}
+              />
+              {!errors.email && (
+                <Text ml="1" mt="1" color="gray.300">
+                  Exemplo: name@mail.com
+                </Text>
+              )}
+            </Box>
+            <Box w="100%">
+              <Input
+                icon={FaLock}
+                label="Senha"
+                {...register("password")}
+                placeholder="Digite sua senha"
+                error={errors.password}
+                type="password"
+              />
+            </Box>
+            <Box w="100%">
+              <Input
+                icon={FaLock}
+                label="Confirme senha"
+                {...register("confirmPassword")}
+                placeholder="Confirme sua senha"
+                error={errors.confirmPassword}
+                type="password"
+              />
+            </Box>
+          </RegisterForm>
         </Flex>
       </Flex>
     </>

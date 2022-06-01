@@ -5,6 +5,7 @@ import {
   useState,
   ReactNode,
 } from "react";
+import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 
 const UserAuth = () => {
@@ -46,6 +47,7 @@ interface AuthProviderProps {
 const AuthContext = createContext<ContextValue>({} as ContextValue);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
+  const history = useHistory();
   const [data, setData] = useState<UserData>(() => {
     const accessToken = localStorage.getItem("Doit:accessToken");
     const user = localStorage.getItem("Doit:user");
@@ -75,6 +77,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     localStorage.removeItem("Doit:user");
 
     setData({} as UserData);
+    history.push("/login");
   }, []);
 
   return (
