@@ -23,6 +23,7 @@ interface Task {
   title: string;
   description: string;
   completed: boolean;
+  date: string;
 }
 
 interface ModalDetailsProps {
@@ -101,7 +102,6 @@ const ModalDetails = ({ isOpen, onClose, task }: ModalDetailsProps) => {
             {task.title}
           </Heading>
           <Text color="gray.400" pt="4">
-            {" "}
             {task.description}
           </Text>
         </ModalBody>
@@ -113,8 +113,7 @@ const ModalDetails = ({ isOpen, onClose, task }: ModalDetailsProps) => {
             value={task.completed ? 100 : 10}
           />
           <Text color="gray.300" mt="2">
-            {" "}
-            data{" "}
+            {task.date}
           </Text>
         </Box>
       </ModalContent>

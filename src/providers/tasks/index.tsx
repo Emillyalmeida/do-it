@@ -12,6 +12,7 @@ interface Task {
   description: string;
   userId: string;
   completed: boolean;
+  date: string;
 }
 
 interface TaskContextData {

@@ -50,7 +50,13 @@ const ModalCreateTask = ({ isOpen, onClose }: ModalSuccessProps) => {
   const { createTask } = useTasks();
 
   const postTask = (data: TaskData) => {
-    const newData = { ...data, completed: false, userId: user.id };
+    const today = new Date();
+    const newData = {
+      ...data,
+      completed: false,
+      userId: user.id,
+      date: today.toLocaleDateString("pt-BR"),
+    };
 
     createTask(newData, accessToken).then((_) => onClose());
   };

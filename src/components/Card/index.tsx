@@ -23,6 +23,7 @@ interface Task {
   title: string;
   description: string;
   completed: boolean;
+  date: string;
 }
 
 const Card = ({ task, onClick }: CardProps) => {
@@ -81,7 +82,7 @@ const Card = ({ task, onClick }: CardProps) => {
           value={task.completed ? 100 : 10}
         />
         <Text color="gray.300" mt="3">
-          data
+          {task.date}
         </Text>
       </Box>
     </Box>
