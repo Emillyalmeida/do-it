@@ -21,6 +21,7 @@ import NotFound from "./NotFound";
 import { FaClipboard } from "react-icons/fa";
 import ModalCreateTask from "../../components/Modal/ModalCreatetask";
 import { theme } from "../../styles/theme";
+import Loading from "./Loadinng";
 
 interface Task {
   id: string;
@@ -30,7 +31,7 @@ interface Task {
 }
 
 const Dashboard = () => {
-  const [loading, setLoading] = useState(true);
+  const [Load, setLoading] = useState(true);
   const [clickTask, setTask] = useState({} as Task);
 
   const { user, accessToken } = UserAuth();
@@ -39,7 +40,7 @@ const Dashboard = () => {
   console.log(tasks);
   useEffect(() => {
     setLoading(true);
-    loadingTasks(user.id, accessToken).then((_) => setLoading(false));
+    loadingTasks(user.id, accessToken).then((_) => setLoading(true));
   }, []);
 
   const {
@@ -65,7 +66,7 @@ const Dashboard = () => {
       <ModalCreateTask onClose={onClose} isOpen={isOpen} />
       <Box>
         <Header />
-        {!loading && !tasks.length ? (
+        {!Load && !tasks.length ? (
           <>
             <Box
               mt="4"
@@ -116,21 +117,23 @@ const Dashboard = () => {
               <NotFound taskNotFound={taskNotFound} />
             ) : (
               <>
-                {loading ? (
-                  <></>
-                ) : (
-                  <Grid
-                    w="100%"
-                    templateColumns="repeat(auto-fill, minmax(400px,1fr))"
-                    gap={10}
-                    p="8"
-                    mt="4"
-                  >
-                    {tasks.map((task) => (
-                      <Card task={task} key={task.id} onClick={handleClick} />
-                    ))}
-                  </Grid>
-                )}
+                <Grid
+                  w="100%"
+                  templateColumns="repeat(auto-fill, minmax(315px,1fr))"
+                  gap={10}
+                  p="8"
+                  mt="4"
+                >
+                  {Load ? (
+                    <Loading repeatCount={6} />
+                  ) : (
+                    <>
+                      {tasks.map((task) => (
+                        <Card task={task} key={task.id} onClick={handleClick} />
+                      ))}
+                    </>
+                  )}
+                </Grid>
               </>
             )}
           </>
