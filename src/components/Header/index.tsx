@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <Flex
       bg="white"
-      h={["11vh", "11vh", "13vh"]}
+      h={["11vh", "11vh", "12vh"]}
       borderWidth="1px"
       borderColor="gray.50"
       paddingY="4"

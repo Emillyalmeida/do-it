@@ -65,6 +65,7 @@ const TasksProvider = ({ children }: TasksProviderProp) => {
         setTasks(response.data);
       } catch (error) {
         console.log(error);
+        setTasks([]);
       }
     },
     []
