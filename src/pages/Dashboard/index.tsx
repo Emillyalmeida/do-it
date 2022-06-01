@@ -31,16 +31,13 @@ interface Task {
 }
 
 const Dashboard = () => {
-  const [Load, setLoading] = useState(true);
   const [clickTask, setTask] = useState({} as Task);
-
   const { user, accessToken } = UserAuth();
-  const { tasks, loadingTasks, notFound, taskNotFound } = useTasks();
+  const { tasks, loadingTasks, notFound, taskNotFound, Load } = useTasks();
 
   console.log(tasks);
   useEffect(() => {
-    setLoading(true);
-    loadingTasks(user.id, accessToken).then((_) => setLoading(true));
+    loadingTasks(user.id, accessToken);
   }, []);
 
   const {

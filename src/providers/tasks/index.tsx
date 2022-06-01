@@ -35,6 +35,7 @@ interface TaskContextData {
   ) => Promise<void>;
   notFound: boolean;
   taskNotFound: string;
+  Load: boolean;
 }
 
 const TasksContext = createContext<TaskContextData>({} as TaskContextData);
@@ -53,9 +54,11 @@ const TasksProvider = ({ children }: TasksProviderProp) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [notFound, setNotFouns] = useState(false);
   const [taskNotFound, setTaskNotFound] = useState("");
+  const [Load, setLoad] = useState(true);
 
   const loadingTasks = useCallback(
     async (userId: string, accessToken: string) => {
+      setLoad(true);
       try {
         const response = await api.get(`tasks?userId=${userId}`, {
           headers: {
@@ -63,9 +66,11 @@ const TasksProvider = ({ children }: TasksProviderProp) => {
           },
         });
         setTasks(response.data);
+        setLoad(false);
       } catch (error) {
         console.log(error);
         setTasks([]);
+        setLoad(false);
       }
     },
     []
@@ -129,9 +134,11 @@ const TasksProvider = ({ children }: TasksProviderProp) => {
       });
       if (!response.data.length) {
         setNotFouns(true);
+        setLoad(false);
         return setTaskNotFound(search);
       }
       setNotFouns(false);
+      setLoad(false);
       setTasks(response.data);
     },
     []
@@ -148,6 +155,7 @@ const TasksProvider = ({ children }: TasksProviderProp) => {
         searchTask,
         notFound,
         taskNotFound,
+        Load,
       }}
     >
       {children}
