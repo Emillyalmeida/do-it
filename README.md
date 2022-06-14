@@ -1,7 +1,5 @@
 # Bem vindo(a) ao **DO-it[!!!]**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## sobre o DO-it
 
 È uma todoList, nela você pode se cadastrar e logar para ter a acesso a sua lista de tarefas, onde é possivel criar novas tarefas, conclui-las e deleta-las, alem de poder fazer o filtro por pesquisa.
