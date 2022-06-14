@@ -1,4 +1,4 @@
-# Bem vindo(a) ao **DO-it[!!!]**
+# Bem vindo(a) ao **DO-it!!!**
 
 ## sobre o DO-it
 
