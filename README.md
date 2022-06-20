@@ -1,6 +1,4 @@
-# Bem vindo(a) ao **DO-it[!!!]**
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Bem vindo(a) ao **DO-it!!!**
 
 ## sobre o DO-it
 
