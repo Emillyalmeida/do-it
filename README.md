@@ -16,8 +16,8 @@ Esse projeto foi todo desenvolvido usando **TypeScript**, todo o layout foi inte
 - Axios
 - Yup
 
+## Links
+
 ### [Fake API](https://github.com/Emillyalmeida/json-server-doit)
 
 ### [Do-It](https://do-it-dusky-theta.vercel.app)
-
-Faça o Clone na do JSON server e start localmente o servidor para utilizar o Do-it.
